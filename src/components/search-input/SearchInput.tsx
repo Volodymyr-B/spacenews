@@ -1,4 +1,10 @@
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 
 import { Divider, InputAdornment, TextField } from "@mui/material";
@@ -13,8 +19,10 @@ export const SearchInput: FC<SearchInputProps> = ({ setSearch }) => {
   const debouncedValue = useDebounce(value);
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    setSearch(debouncedValue);
   };
+  useEffect(() => {
+    setSearch(debouncedValue);
+  }, [debouncedValue]);
 
   return (
     <div className="flex items-center sm:w-1/2 mb-5">
