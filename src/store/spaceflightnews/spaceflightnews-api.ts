@@ -1,5 +1,6 @@
 import { baseURL } from "./../../constants/baseURL";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IArticle } from "../../types/article";
 
 export const spaceFlightNewsApi = createApi({
   reducerPath: "spaceflightnews/api",
@@ -7,9 +8,9 @@ export const spaceFlightNewsApi = createApi({
     baseUrl: baseURL,
   }),
   endpoints: (build) => ({
-    searchArticles: build.query<any, string>({
+    searchArticles: build.query<IArticle[], string>({
       query: (search: string) => ({
-        url: `?summary_contains=${search}`,
+        url: `?title_contains=${search}`,
       }),
     }),
   }),
