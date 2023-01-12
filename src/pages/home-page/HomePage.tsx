@@ -1,13 +1,18 @@
 import { NewsCard } from "../../components/news-card/NewsCard";
+import { SearchInput } from "../../components/search-input/SearchInput";
 import { useSearchArticlesQuery } from "../../store/spaceflightnews/spaceflightnews-api";
+import { Divider, Typography } from "@mui/material";
 
 export const HomePage = () => {
   const { isLoading, isError, data } = useSearchArticlesQuery("starlink");
   return (
     <div className="max-w-7xl">
-      <span>Filter by keywords</span>
-      <input />
-      <span>Results</span>
+      <div className="flex flex-col gap-3 mb-10">
+        <Typography>Filter by keywords</Typography>
+        <SearchInput />
+        <Typography>Results : {data?.length}</Typography>
+        <Divider />
+      </div>
       <div className="flex justify-center flex-wrap gap-5">
         {data?.map((article) => (
           <NewsCard
