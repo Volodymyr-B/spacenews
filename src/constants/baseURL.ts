@@ -1,1 +1,1 @@
-export const baseURL = "https://api.spaceflightnewsapi.net/v3/articles";
+export const baseURL = "https://api.spaceflightnewsapi.net/v3/";
