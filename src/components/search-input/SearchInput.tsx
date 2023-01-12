@@ -1,15 +1,20 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import { useDebounce } from "../../hooks/useDebounce";
+
 import { Divider, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 interface SearchInputProps {
-  value: string;
-  changeValue: Dispatch<SetStateAction<string>>;
+  setSearch: Dispatch<SetStateAction<string>>;
 }
 
-export const SearchInput: FC<SearchInputProps> = ({ value, changeValue }) => {
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
-    changeValue(e.target.value);
+export const SearchInput: FC<SearchInputProps> = ({ setSearch }) => {
+  const [value, setValue] = useState("");
+  const debouncedValue = useDebounce(value);
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    setSearch(debouncedValue);
+  };
 
   return (
     <div className="flex items-center sm:w-1/2 mb-5">
