@@ -1,24 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NewsCard } from "../../components/news-card/NewsCard";
 import { SearchInput } from "../../components/search-input/SearchInput";
 import { useSearchArticlesQuery } from "../../store/spaceflightnews/spaceflightnews-api";
-import { Divider, Typography } from "@mui/material";
-import { useDebounce } from "../../hooks/useDebounce";
+import { Container, Divider, Typography } from "@mui/material";
+import { useDynamicPagination } from "../../hooks/useDynamicPagination";
 
 export const HomePage = () => {
   const [search, setSearch] = useState("");
-  const debouncedValue = useDebounce(search);
-  const { isLoading, isError, data } = useSearchArticlesQuery(debouncedValue);
+  const limit = useDynamicPagination();
+  const { isLoading, isError, data } = useSearchArticlesQuery({
+    search,
+    limit,
+  });
 
+  console.log(limit);
   return (
-    <div className="max-w-7xl">
+    <Container maxWidth="xl">
       <div className="flex flex-col gap-3 mb-10">
         <Typography>Filter by keywords</Typography>
-        <SearchInput value={search} changeValue={setSearch} />
+        <SearchInput setSearch={setSearch} />
         <Typography>Results : {data?.length}</Typography>
         <Divider />
       </div>
-      <div className="flex justify-center flex-wrap gap-5">
+      <div className="flex justify-center flex-wrap gap-8">
         {data?.map((article) => (
           <NewsCard
             key={article.id}
@@ -30,6 +34,6 @@ export const HomePage = () => {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };

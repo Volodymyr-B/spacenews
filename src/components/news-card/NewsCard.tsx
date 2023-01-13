@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
+
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import {
@@ -26,7 +28,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   publishedAt,
 }) => {
   return (
-    <Card className="w-80 ">
+    <Card elevation={4} className="w-[310px] lg:w-[31%]">
       <CardMedia
         component="img"
         alt="news image"
@@ -34,8 +36,8 @@ export const NewsCard: FC<NewsCardProps> = ({
         image={imageUrl}
       />
       <CardContent>
-        <CalendarTodayIcon />
         <Typography variant="body2" color="text.secondary">
+          <CalendarTodayIcon />
           {publishedAt.toString()}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
@@ -46,7 +48,7 @@ export const NewsCard: FC<NewsCardProps> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">
+        <Button size="small" component={Link} to={`/article/${id}`}>
           Read more
           <TrendingFlatIcon />
         </Button>

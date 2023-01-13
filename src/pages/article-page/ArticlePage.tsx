@@ -14,7 +14,7 @@ export const ArticlePage = () => {
 
   // not enough data from backend, filling up the space
   const articleInfo = new Array(5)
-    .fill(1)
+    .fill("")
     .map((_, index) => <Typography key={index}>{data?.summary}</Typography>);
   //--------------------------------------------------------
 
@@ -40,8 +40,12 @@ export const ArticlePage = () => {
           </Typography>
           <div className="flex flex-col gap-3">{articleInfo}</div>
           <div className="flex justify-around">
-            <Typography variant="h6">{data?.newsSite}</Typography>
-            <Typography variant="h6">{data?.publishedAt.toString()}</Typography>
+            <Typography variant="h6" color="text.secondary">
+              {data?.newsSite}
+            </Typography>
+            <Typography variant="h6" color="text.secondary">
+              {data?.publishedAt.toString()}
+            </Typography>
           </div>
         </Paper>
         <Button onClick={goBack} size="small" className="ml-10">
