@@ -24,12 +24,7 @@ export const useDynamicPagination = () => {
       100
     ) {
       setChangeLimit(true);
-    }
-    if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) >
-      100
-    ) {
+    } else {
       setChangeLimit(false);
     }
   };

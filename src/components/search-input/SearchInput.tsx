@@ -15,13 +15,15 @@ interface SearchInputProps {
 }
 
 export const SearchInput: FC<SearchInputProps> = ({ setSearch }) => {
-  const [value, setValue] = useState("");
-  const debouncedValue = useDebounce(value);
+  const [inputValue, setInputValue] = useState("");
+  const debouncedValue = useDebounce(inputValue);
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setInputValue(e.target.value);
   };
   useEffect(() => {
-    setSearch(debouncedValue);
+    if (debouncedValue.trim()) {
+      setSearch(debouncedValue);
+    }
   }, [debouncedValue]);
 
   return (
@@ -31,7 +33,7 @@ export const SearchInput: FC<SearchInputProps> = ({ setSearch }) => {
         fullWidth
         placeholder="
         What do we want to search today??"
-        value={value}
+        value={inputValue}
         onChange={inputHandler}
         InputProps={{
           startAdornment: (
