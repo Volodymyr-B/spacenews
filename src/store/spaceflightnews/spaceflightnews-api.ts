@@ -23,7 +23,12 @@ export const spaceFlightNewsApi = createApi({
         },
       }),
     }),
+    getArticle: build.query<IArticle, number>({
+      query: (id) => ({
+        url: `articles/${id}`,
+      }),
+    }),
   }),
 });
-
-export const { useSearchArticlesQuery } = spaceFlightNewsApi;
+export const { useSearchArticlesQuery, useLazyGetArticleQuery } =
+  spaceFlightNewsApi;
