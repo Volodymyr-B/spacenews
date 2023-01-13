@@ -1,13 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import { ArticlePage } from "./pages/article-page/ArticlePage";
 import { HomePage } from "./pages/home-page/HomePage";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
+      </Routes>
     </>
   );
 }
 
 export default App;
-
-// https://api.spaceflightnewsapi.net/v3/articles?summary_contains=starlink&summary_contains=ship&title_contains=starlink&title_contains=ship
