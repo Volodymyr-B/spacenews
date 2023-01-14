@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import Highlighter from "react-highlight-words";
 
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
@@ -18,6 +19,7 @@ interface NewsCardProps {
   imageUrl: string;
   newsSite: string;
   publishedAt: Date;
+  highlight: string;
 }
 
 export const NewsCard: FC<NewsCardProps> = ({
@@ -26,6 +28,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   imageUrl,
   newsSite,
   publishedAt,
+  highlight,
 }) => {
   return (
     <Card elevation={4} className="w-[310px] lg:w-[31%]">
@@ -41,7 +44,10 @@ export const NewsCard: FC<NewsCardProps> = ({
           {publishedAt.toString()}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          <Highlighter
+            searchWords={highlight.split(" ")}
+            textToHighlight={title}
+          />
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {newsSite}

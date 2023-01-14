@@ -25,6 +25,7 @@ export const HomePage = () => {
       <div className="flex justify-center flex-wrap gap-8">
         {data?.map((article) => (
           <NewsCard
+            highlight={search}
             key={article.id}
             id={article.id}
             title={article.title}
