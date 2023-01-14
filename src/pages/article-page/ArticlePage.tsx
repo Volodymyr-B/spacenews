@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useLazyGetArticleQuery } from "../../store/spaceflightnews/spaceflightnews-api";
 import { useNavigate, useParams } from "react-router-dom";
+
+import { ArticlePageSkeleton } from "./ArticlePageSkeleton";
+
 import { Button, Container, Paper, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
@@ -25,6 +28,8 @@ export const ArticlePage = () => {
       redirect();
     }
   }, []);
+
+  if (isLoading) return <ArticlePageSkeleton />;
 
   return (
     <>

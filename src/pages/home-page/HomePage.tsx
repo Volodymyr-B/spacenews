@@ -4,6 +4,7 @@ import { SearchInput } from "../../components/search-input/SearchInput";
 import { useSearchArticlesQuery } from "../../store/spaceflightnews/spaceflightnews-api";
 import { Container, Divider, Typography } from "@mui/material";
 import { useDynamicPagination } from "../../hooks/useDynamicPagination";
+import { HomePageSkeleton } from "./HomePageSkeleton";
 
 export const HomePage = () => {
   const [search, setSearch] = useState("");
@@ -13,7 +14,8 @@ export const HomePage = () => {
     limit,
   });
 
-  console.log(limit);
+  if (isLoading) return <HomePageSkeleton />;
+
   return (
     <Container maxWidth="xl">
       <div className="flex flex-col gap-3 mb-10">
