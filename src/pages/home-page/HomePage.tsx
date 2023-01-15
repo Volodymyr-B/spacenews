@@ -8,6 +8,7 @@ import { useSearchArticlesQuery } from "../../services/spaceflightnews/spaceflig
 import { useDynamicPagination } from "../../hooks/useDynamicPagination";
 
 import { Container, Divider, Typography } from "@mui/material";
+import { ShowError } from "../../components/show-error/ShowError";
 
 export const HomePage = () => {
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ export const HomePage = () => {
   });
 
   if (isLoading) return <HomePageLoading />;
-  if (isError) return <>sometging wrong</>;
+  if (isError) return <ShowError />;
   if (!data) return null;
   return (
     <Container maxWidth="xl">

@@ -7,6 +7,7 @@ import { ArticlePageLoading } from "../../components/skeletons/ArticlePageLoadin
 
 import { Button, Container, Paper, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { ShowError } from "../../components/show-error/ShowError";
 
 export const ArticlePage = () => {
   const [getArticle, { data, isLoading, isError }] = useLazyGetArticleQuery();
@@ -25,7 +26,7 @@ export const ArticlePage = () => {
   }, []);
 
   if (isLoading) return <ArticlePageLoading />;
-  if (isError) return <>sometging wrong</>;
+  if (isError) return <ShowError />;
   if (!data) return null;
 
   const { title, newsSite, imageUrl, summary } = data;
