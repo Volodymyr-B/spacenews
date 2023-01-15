@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLazyGetArticleQuery } from "../../store/spaceflightnews/spaceflightnews-api";
+import { useLazyGetArticleQuery } from "../../services/spaceflightnews/spaceflightnews-api";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { mockText } from "../../constants/mockText"; // not enough data from backend, filling up the space
@@ -11,9 +11,8 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 export const ArticlePage = () => {
   const [getArticle, { data, isLoading, isError }] = useLazyGetArticleQuery();
 
-  const navigate = useNavigate();
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const redirect = () => navigate("/", { replace: true });
 

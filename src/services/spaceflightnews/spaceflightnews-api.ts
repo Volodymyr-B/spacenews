@@ -1,4 +1,4 @@
-import { baseURL } from "./../../constants/baseURL";
+import { baseURL } from "../../constants/baseURL";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IArticle } from "../../types/article";
 
@@ -14,8 +14,8 @@ export const spaceFlightNewsApi = createApi({
   }),
   endpoints: (build) => ({
     searchArticles: build.query<IArticle[], searchArticlesParams>({
-      query: ({ search, limit = 15 }) => ({
-        url: `articles`,
+      query: ({ search, limit }) => ({
+        url: "articles?",
         params: {
           _limit: limit,
           title_contains: search,

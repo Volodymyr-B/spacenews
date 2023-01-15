@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { spaceFlightNewsApi } from "./spaceflightnews/spaceflightnews-api";
+import { spaceFlightNewsApi } from "../services/spaceflightnews/spaceflightnews-api";
 
 export const store = configureStore({
   reducer: {

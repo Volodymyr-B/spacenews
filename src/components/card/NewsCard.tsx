@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import Highlighter from "react-highlight-words";
 
+import { normalize } from "../../utils/normalize-text";
+
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import {
@@ -20,16 +22,19 @@ interface NewsCardProps {
   newsSite: string;
   publishedAt: Date;
   highlight: string;
+  summary: string;
 }
 
 export const NewsCard: FC<NewsCardProps> = ({
   id,
   title,
   imageUrl,
-  newsSite,
   publishedAt,
   highlight,
+  summary,
 }) => {
+  const { textSlice, convertedDate } = normalize();
+
   return (
     <Card elevation={4} className="w-[310px] lg:w-[31%]">
       <CardMedia
@@ -39,18 +44,21 @@ export const NewsCard: FC<NewsCardProps> = ({
         image={imageUrl}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography color="text.secondary" className="flex gap-2">
           <CalendarTodayIcon />
-          {publishedAt.toString()}
+          {convertedDate(publishedAt)}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5">
           <Highlighter
             searchWords={highlight.split(" ")}
-            textToHighlight={title}
+            textToHighlight={textSlice(title)}
           />
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {newsSite}
+        <Typography className="min-h-[100px]">
+          <Highlighter
+            searchWords={highlight.split(" ")}
+            textToHighlight={textSlice(summary, 210)}
+          />
         </Typography>
       </CardContent>
       <CardActions>
