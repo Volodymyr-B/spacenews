@@ -1,7 +1,7 @@
 import { Container, Divider, Skeleton, Stack } from "@mui/material";
-import { NewsCardSkeleton } from "../../components/news-card/NewsCardSkeleton";
+import { NewsCardLoading } from "./NewsCardLoading";
 
-export const HomePageSkeleton = () => {
+export const HomePageLoading = () => {
   return (
     <>
       <Container maxWidth="xl" className="flex flex-col gap-8">
@@ -13,7 +13,7 @@ export const HomePageSkeleton = () => {
         <Divider />
         <div className="flex justify-center flex-wrap gap-8">
           {new Array(9).fill("").map((_, index) => (
-            <NewsCardSkeleton key={index} />
+            <NewsCardLoading key={index} />
           ))}
         </div>
       </Container>

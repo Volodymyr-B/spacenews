@@ -3,7 +3,7 @@ import { useLazyGetArticleQuery } from "../../store/spaceflightnews/spaceflightn
 import { useNavigate, useParams } from "react-router-dom";
 
 import { mockText } from "../../constants/mockText"; // not enough data from backend, filling up the space
-import { ArticlePageSkeleton } from "./ArticlePageSkeleton";
+import { ArticlePageLoading } from "../../components/skeletons/ArticlePageLoading";
 
 import { Button, Container, Paper, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -25,7 +25,7 @@ export const ArticlePage = () => {
     }
   }, []);
 
-  if (isLoading) return <ArticlePageSkeleton />;
+  if (!isLoading) return <ArticlePageLoading />;
   if (isError) return <>sometging wrong</>;
   if (!data) return null;
 

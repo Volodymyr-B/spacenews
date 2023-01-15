@@ -4,7 +4,7 @@ import { SearchInput } from "../../components/search-input/SearchInput";
 import { useSearchArticlesQuery } from "../../store/spaceflightnews/spaceflightnews-api";
 import { Container, Divider, Typography } from "@mui/material";
 import { useDynamicPagination } from "../../hooks/useDynamicPagination";
-import { HomePageSkeleton } from "./HomePageSkeleton";
+import { HomePageLoading } from "../../components/skeletons/HomePageLoading";
 
 export const HomePage = () => {
   const [search, setSearch] = useState("");
@@ -14,7 +14,9 @@ export const HomePage = () => {
     limit,
   });
 
-  if (isLoading) return <HomePageSkeleton />;
+  if (isLoading) return <HomePageLoading />;
+  if (isError) return <>sometging wrong</>;
+  if (!data) return null;
 
   return (
     <Container maxWidth="xl">
@@ -25,7 +27,7 @@ export const HomePage = () => {
         <Divider />
       </div>
       <div className="flex justify-center flex-wrap gap-8">
-        {data?.map((article) => (
+        {data.map((article) => (
           <NewsCard
             highlight={search}
             key={article.id}

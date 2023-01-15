@@ -1,7 +1,6 @@
 import { baseURL } from "./../../constants/baseURL";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IArticle } from "../../types/article";
-import { url } from "inspector";
 
 interface searchArticlesParams {
   limit: number;

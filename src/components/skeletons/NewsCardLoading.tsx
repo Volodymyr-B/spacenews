@@ -1,6 +1,6 @@
 import { Paper, Skeleton } from "@mui/material";
 
-export const NewsCardSkeleton = () => {
+export const NewsCardLoading = () => {
   return (
     <>
       <Paper elevation={4} className="w-[310px] lg:w-[31%]">
