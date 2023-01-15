@@ -25,30 +25,27 @@ export const ArticlePage = () => {
     }
   }, []);
 
-  if (!isLoading) return <ArticlePageLoading />;
+  if (isLoading) return <ArticlePageLoading />;
   if (isError) return <>sometging wrong</>;
   if (!data) return null;
 
-  const { title, newsSite, imageUrl, publishedAt, summary } = data;
+  const { title, newsSite, imageUrl, summary } = data;
 
   return (
     <>
       <img className="h-56 w-full object-cover" src={imageUrl} alt={imageUrl} />
       <Container maxWidth="xl" className="-mt-16 absolute left-0 right-0">
-        <Paper elevation={4} className="p-6 mb-8 min-h-[400px] text-center">
+        <Paper elevation={4} className="p-8 mb-8 text-center">
           <Typography variant="h6" component="h3" className="mb-5">
             {title}
           </Typography>
-          <div className="flex flex-col gap-3">
+          <Typography className="flex flex-col gap-3 text-start">
             {summary}
             {mockText}
-          </div>
-          <div className="flex justify-around">
+          </Typography>
+          <div className="flex justify-end">
             <Typography variant="h6" color="text.secondary">
               {newsSite}
-            </Typography>
-            <Typography variant="h6" color="text.secondary">
-              {publishedAt.toString()}
             </Typography>
           </div>
         </Paper>

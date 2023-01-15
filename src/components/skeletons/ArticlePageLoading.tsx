@@ -4,7 +4,7 @@ export const ArticlePageLoading = () => {
   return (
     <>
       <Skeleton variant="rectangular" className="h-56" />
-      <Container maxWidth="xl" className="m-auto">
+      <Container maxWidth="xl" className="-mt-16 absolute left-0 right-0">
         <Paper
           elevation={4}
           className="h-[55vh] w-full pt-11 flex flex-col items-center gap-6"
