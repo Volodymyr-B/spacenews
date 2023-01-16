@@ -36,14 +36,14 @@ export const NewsCard: FC<NewsCardProps> = ({
   const { textSlice, convertedDate } = normalize();
 
   return (
-    <Card elevation={4} className="w-[310px] lg:w-[31%]">
+    <Card elevation={4} className="flex flex-col w-[310px] lg:w-[31%]">
       <CardMedia
         component="img"
         alt="news image"
         height="140"
         image={imageUrl}
       />
-      <CardContent>
+      <CardContent className="h-full">
         <Typography color="text.secondary" className="flex gap-2">
           <CalendarTodayIcon />
           {convertedDate(publishedAt)}
@@ -52,6 +52,7 @@ export const NewsCard: FC<NewsCardProps> = ({
           <Highlighter
             searchWords={highlight.split(" ")}
             textToHighlight={textSlice(title)}
+            autoEscape
           />
         </Typography>
         <Typography className="min-h-[100px]">
