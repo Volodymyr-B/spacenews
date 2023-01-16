@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/spacenews/static/css/main.66dfbf23.css",
+    "main.js": "/spacenews/static/js/main.b9b86062.js",
+    "index.html": "/spacenews/index.html",
+    "main.66dfbf23.css.map": "/spacenews/static/css/main.66dfbf23.css.map",
+    "main.b9b86062.js.map": "/spacenews/static/js/main.b9b86062.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.66dfbf23.css",
+    "static/js/main.b9b86062.js"
+  ]
+}
