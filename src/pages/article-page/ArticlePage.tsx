@@ -35,7 +35,7 @@ export const ArticlePage = () => {
     <>
       <img className="h-56 w-full object-cover" src={imageUrl} alt={imageUrl} />
       <Container maxWidth="xl" className="-mt-16 absolute left-0 right-0">
-        <Paper elevation={4} className="p-8 mb-8 text-center">
+        <Paper elevation={4} className="p-3 md:p-8 mb-8 text-center">
           <Typography variant="h6" component="h3" className="mb-5">
             {title}
           </Typography>

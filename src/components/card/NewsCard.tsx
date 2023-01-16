@@ -55,10 +55,7 @@ export const NewsCard: FC<NewsCardProps> = ({
           />
         </Typography>
         <Typography className="min-h-[100px]">
-          <Highlighter
-            searchWords={highlight.split(" ")}
-            textToHighlight={textSlice(summary, 210)}
-          />
+          {textSlice(summary, 210)}
         </Typography>
       </CardContent>
       <CardActions>
